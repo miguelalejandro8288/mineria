@@ -1,0 +1,6 @@
+@mineria_HostAddress = http://localhost:5193
+
+GET {{mineria_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
