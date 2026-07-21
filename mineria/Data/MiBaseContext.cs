@@ -10,6 +10,7 @@ public partial class MiBaseContext : DbContext
     public MiBaseContext()
     {
     }
+    
 
     public MiBaseContext(DbContextOptions<MiBaseContext> options)
         : base(options)
