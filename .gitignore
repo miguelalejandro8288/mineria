@@ -1,0 +1,31 @@
+# Build results & artifacts
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# Visual Studio / VS Code working files
+.vs/
+.vscode/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+*.openeddf
+*.VC.db
+
+# Rider / JetBrains 
+.idea/
+
+# Testing & Diagnostics
+BenchmarkDotNet.Artifacts/
+InferDotNetResult/
+*.log
+*.binlog
+
+# Secrets and local configurations
+appsettings.Development.json
+*.usersecrets
