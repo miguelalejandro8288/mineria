@@ -7,6 +7,7 @@ namespace mineria.Dtos
         [Required]
         [MaxLength(100)]
         public string NumeroComprobante { get; set; } = string.Empty;
+          
 
         [Required]
         [EmailAddress]
