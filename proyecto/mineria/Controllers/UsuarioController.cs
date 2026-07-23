@@ -8,7 +8,7 @@ namespace mineria.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    [Authorize]
+   // [Authorize]
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
@@ -18,7 +18,7 @@ namespace mineria.Controllers
             _usuarioService = usuarioService;
         }
 
-        [HttpGet]
+        [HttpGet("listar")]
         public async Task<IActionResult> GetAll()
         {
             var lista = await _usuarioService.GetAllAsync();
@@ -68,5 +68,12 @@ namespace mineria.Controllers
 
             return NoContent();
         }
+        [HttpGet]
+        public async Task<IActionResult> GetAll([FromQuery] PostQueryFilter filter)
+        {
+            var response = await _usuarioService.GetFiltradoAsync(filter);
+            return Ok(response);
+        }
+
     }
 }

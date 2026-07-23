@@ -1,7 +1,8 @@
 ﻿using mineria.Data;
 using mineria.Interfaces;
+using mineria.Repositories;
 
-namespace mineria.Repositories
+namespace ApiUsuarios.Repositories
 {
     public class UnitOfWork : IUnitOfWork
     {

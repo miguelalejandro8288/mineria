@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using mineria.Data;
 using mineria.Dtos;
 using mineria.Interfaces;
 using mineria.Models;
@@ -84,5 +85,13 @@ namespace mineria.Services
             await _unitOfWork.SaveChangesAsync();
             return true;
         }
+        public async Task<ApiResponse<IEnumerable<UsuarioDto>>> GetFiltradoAsync(PostQueryFilter filter)
+        {
+            var usuarios = await _unitOfWork.Usuarios.GetFiltradoAsync(filter);
+            var usuariosDto = _mapper.Map<IEnumerable<UsuarioDto>>(usuarios);
+
+            return new ApiResponse<IEnumerable<UsuarioDto>>(usuariosDto, usuarios.MetaData);
+        }
+
     }
 }
