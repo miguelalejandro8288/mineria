@@ -8,6 +8,7 @@ namespace ApiUsuarios.Repositories
     {
         private readonly MiBaseContext _context;
         private IUsuarioRepository? _usuarioRepository;
+        private IAnalisisLabotarioRepository? _analisisLabotarioRepository;
 
         public UnitOfWork(MiBaseContext context)
         {
@@ -16,6 +17,8 @@ namespace ApiUsuarios.Repositories
 
         public IUsuarioRepository Usuarios
             => _usuarioRepository ??= new UsuarioRepository(_context);
+        public IAnalisisLabotarioRepository AnalisisLabotario
+            => _analisisLabotarioRepository ??= new AnalisisRepository(_context);
 
         public async Task<int> SaveChangesAsync()
         {

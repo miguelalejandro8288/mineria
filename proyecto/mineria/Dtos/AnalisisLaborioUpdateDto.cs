@@ -1,18 +1,13 @@
 ﻿namespace mineria.Dtos
 {
-    public class AnalisisLabotarioDto
+    public class AnalisisLaborioUpdateDto
     {
         public int Id { get; set; }
-        public int IdLote { get; set; }
-        public int IdProducto { get; set; }
         public decimal LeyOro { get; set; }
         public decimal LeyPlata { get; set; }
         public decimal LeyCobre { get; set; }
         public decimal ImpurezasPorcentaje { get; set; }
         public string EstadoAnalisis { get; set; } = string.Empty;
         public string CertificadoPdfUrl { get; set; } = string.Empty;
-
-        public int IdUsuarioLaboratio { get; set; }
-
     }
 }

@@ -11,6 +11,10 @@ namespace mineria.Mapping
             CreateMap<Usuario, UsuarioDto>();
             CreateMap<UsuarioCreateDto, Usuario>();
             CreateMap<UsuarioUpdateDto, Usuario>();
+
+            CreateMap<AnalisisLaboratorio, AnalisisLabotarioDto>();
+            CreateMap<AnalisisLaboratorioCreateDto, AnalisisLaboratorio>();
+            CreateMap<AnalisisLaborioUpdateDto, AnalisisLaboratorio>();
         }
     }
 }
