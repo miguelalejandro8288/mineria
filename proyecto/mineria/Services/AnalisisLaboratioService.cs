@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using mineria.Data;
 using mineria.Dtos;
 using mineria.Interfaces;
 using mineria.Models;
@@ -9,7 +10,6 @@ namespace mineria.Services
     {
         private readonly IUnitOfWork _unitOfWork;
         private readonly IMapper _mapper;
-        private readonly IPasswordHasher _passwordHasher;
 
         public AnalisisLaboratioService(
             IUnitOfWork unitOfWork,
@@ -18,7 +18,6 @@ namespace mineria.Services
         {
             _unitOfWork = unitOfWork;
             _mapper = mapper;
-            _passwordHasher = passwordHasher;
         }
 
         public async Task<IEnumerable<AnalisisLabotarioDto>> GetAllAsync()
@@ -38,13 +37,8 @@ namespace mineria.Services
 
         public async Task<AnalisisLabotarioDto> AddAsync(AnalisisLaboratorioCreateDto dto)
         {
-            var existe = await _unitOfWork.AnalisisLabotario.GetByEstadoAnalisisAsync(dto.EstadoAnalisis);
-            if (existe != null)
-                throw new Exception("Ya existe el analisis //considerar para ver que parametro utilizar para la busqueda//.");
-
-            var analisislaboratorio = _mapper.Map<AnalisisLaboratorio>(dto);
-            analisislaboratorio. = _passwordHasher.HashPassword(dto.Clave);
-
+                 var analisislaboratorio = _mapper.Map<AnalisisLaboratorio>(dto);
+           
             await _unitOfWork.AnalisisLabotario.AddAsync(analisislaboratorio);
             await _unitOfWork.SaveChangesAsync();
 
@@ -67,10 +61,6 @@ namespace mineria.Services
             analisislaboratorio.EstadoAnalisis = dto.EstadoAnalisis;
             analisislaboratorio.CertificadoPdfUrl = dto.CertificadoPdfUrl;
 
-            if (!string.IsNullOrWhiteSpace(dto.Clave))
-            {
-                analisislaboratorio.Clave = _passwordHasher.HashPassword(dto.Clave);
-            }
 
             _unitOfWork.AnalisisLabotario.Update(analisislaboratorio);
             await _unitOfWork.SaveChangesAsync();
@@ -86,6 +76,12 @@ namespace mineria.Services
             await _unitOfWork.AnalisisLabotario.DeleteAsync(id);
             await _unitOfWork.SaveChangesAsync();
             return true;
+        }
+
+        public Task<ApiResponse<IEnumerable<AnalisisLabotarioDto>>> GetFiltradoAsync(PostQueryFilter filter)
+        {
+           
+          // aquiiiiiiii falta ver la gia 
         }
     }
 }
